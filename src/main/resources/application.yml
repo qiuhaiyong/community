@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    username: root
+    password: qhy
+    url: jdbc:mysql://localhost:3306/community?useUnicode=true&characterEncoding=utf8&useSSL=true
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  # 可以不写全局配置文件，所有全局配置文件的配置都放在configuration配置项中了。
+  # config-location: classpath:mybatis/mybatis-config.xml
+  configuration:
+    map-underscore-to-camel-case: true
+mybatis-plus:
+  type-aliases-package: com.nowcoder.community.dao
+
