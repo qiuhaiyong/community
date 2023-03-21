@@ -2,9 +2,11 @@ package com.nowcoder.community.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.nowcoder.community.entity.LoginTicket;
+import io.netty.util.internal.UnstableApi;
 import org.apache.ibatis.annotations.*;
 
 @Mapper
+@Deprecated
 public interface LoginTicketMapper  {
     @Insert({
             "insert into login_ticket (user_id,ticket,status,expired) ",

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nowcoder.community.dao.CommentMapper">
+    <sql id="selectFields">
+        id,user_id,entity_type,entity_id,target_id,content,status,create_time
+    </sql>
+    <sql id="insertFields">
+        user_id,entity_type,entity_id,target_id,content,status,create_time
+    </sql>
+
+<!--    List<Comment> selectCommentByEntityType(int entityType,int entityId,int offset,int limit);-->
+    <select id="selectCommentByEntityType" resultType="comment">
+        select <include refid="selectFields"></include>
+        from comment
+        where status = 0
+        and entity_type = #{entityType}
+        and entity_id = #{entityId}
+        order by create_time asc
+        limit #{offset},#{limit}
+    </select>
+
+<!--    int selectCountByEntity(int entityType,int entityId);-->
+    <select id="selectCountByEntity" resultType="int">
+        select count(id) from comment
+        where status = 0
+        and entity_type = #{entityType}
+        and entity_id = #{entityId}
+    </select>
+<!--    int insertComment(Comment comment);-->
+    <insert id="insertComment" parameterType="Comment">
+        insert into comment(<include refid="insertFields"></include>)
+        values(#{userId},#{entityType},#{entityId},#{targetId},#{content},#{status},#{createTime})
+    </insert>
+<!--    Comment selectCommentById(int id);-->
+    <select id="selectCommentById" resultType="comment">
+        select <include refid="selectFields"></include> from comment where id = #{id}
+    </select>
+</mapper>
