@@ -23,6 +23,8 @@
 
 ## 数据库表
 **帖子评论表**
+
+```
 CREATE TABLE `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
@@ -36,7 +38,11 @@ CREATE TABLE `comment` (
   KEY `index_user_id` (`user_id`),
   KEY `index_entity_id` (`entity_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=266 DEFAULT CHARSET=utf8
+```
+
 **帖子表**
+
+```
 CREATE TABLE `discuss_post` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(45) DEFAULT NULL,
@@ -50,7 +56,11 @@ CREATE TABLE `discuss_post` (
   PRIMARY KEY (`id`),
   KEY `index_user_id` (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=292 DEFAULT CHARSET=utf8
+```
+
 **登录凭证表**
+
+```
 CREATE TABLE `login_ticket` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -60,8 +70,11 @@ CREATE TABLE `login_ticket` (
   PRIMARY KEY (`id`),
   KEY `index_ticket` (`ticket`(20))
 ) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8
+```
 
 **私信信息表**
+
+```
 CREATE TABLE `message` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `from_id` int(11) DEFAULT NULL,
@@ -75,8 +88,11 @@ CREATE TABLE `message` (
   KEY `index_to_id` (`to_id`),
   KEY `index_conversation_id` (`conversation_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=410 DEFAULT CHARSET=utf8
+```
 
 **用户表**
+
+```
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) DEFAULT NULL,
@@ -92,3 +108,5 @@ CREATE TABLE `user` (
   KEY `index_username` (`username`(20)),
   KEY `index_email` (`email`(20))
 ) ENGINE=InnoDB AUTO_INCREMENT=161 DEFAULT CHARSET=utf8
+```
+
